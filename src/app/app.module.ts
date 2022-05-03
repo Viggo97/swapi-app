@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { AngularMaterialModule } from "./angular-material/angular-material.module";
 import { LayoutModule} from "./layout/layout.module"
+import {FilmsModule} from "./films/films.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LayoutModule} from "./layout/layout.module"
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    LayoutModule
+    LayoutModule,
+    FilmsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

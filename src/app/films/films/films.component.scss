@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card {
+    max-width: 25rem;
+    margin: 1rem;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+  }
+}
