@@ -6,11 +6,13 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AngularMaterialModule} from "../angular-material/angular-material.module";
 import { FilmsComponent } from './films/films.component';
+import { FilmDetailsComponent } from './film-details/film-details.component';
 
 
 @NgModule({
   declarations: [
-    FilmsComponent
+    FilmsComponent,
+    FilmDetailsComponent
   ],
   imports: [
     CommonModule,
