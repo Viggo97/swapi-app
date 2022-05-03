@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
@@ -16,6 +18,8 @@ import { MatListModule } from '@angular/material/list';
     MatTabsModule,
     MatDividerModule,
     MatListModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
   ],
 })
 export class AngularMaterialModule {}

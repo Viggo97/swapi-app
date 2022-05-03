@@ -3,17 +3,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   catchError,
-  tap,
+  of,
   concatMap,
   map,
   Observable,
   throwError,
   EMPTY,
   BehaviorSubject,
+  from,
+  mergeMap,
+  forkJoin,
+  scan,
 } from 'rxjs';
 
 import { URL } from '../../environments/environment';
-import { Film, FilmSchema } from './model';
+import { Character, Film, FilmSchema, Planet, Starship } from './model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,16 +31,61 @@ export class FilmsService {
   private filmIdSubject = new BehaviorSubject<number>(0);
   filmId$ = this.filmIdSubject.asObservable();
 
+  private charactersSubject = new BehaviorSubject<Character[]>([]);
+  characters$ = this.charactersSubject.asObservable();
+
+  private planetsSubject = new BehaviorSubject<Planet[]>([]);
+  planets$ = this.planetsSubject.asObservable();
+
+  private starshipsSubject = new BehaviorSubject<Starship[]>([]);
+  starships$ = this.starshipsSubject.asObservable();
+
   film$ = this.filmId$.pipe(
-    concatMap((id) =>
-      id != 0 ? this.http.get<Film>(`${URL}/films/${id}`) : EMPTY
-    ),
+    concatMap((id) => {
+      if (id != 0) {
+        return this.http.get<Film>(`${URL}/films/${id}`).pipe(
+          concatMap((film) => {
+            this.getOtherData(film.characters, film.planets, film.starships);
+            return of(film);
+          })
+        );
+      } else {
+        return EMPTY;
+      }
+    }),
     catchError(this.handleError)
   );
 
-  // characters$ = null;
-  // planets$ = null;
-  // starships$ = null;
+  getOtherData(characters: string[], planets: string[], starships: string[]) {
+    const characters$ = from(characters).pipe(
+      mergeMap((characterUrl) => this.http.get(characterUrl)),
+      scan((acc: any, curr: any) => {
+        acc.push(curr);
+        return acc;
+      }, [])
+    );
+
+    const planets$ = from(planets).pipe(
+      mergeMap((planetUrl) => this.http.get(planetUrl)),
+      scan((acc: any, curr: any) => {
+        acc.push(curr);
+        return acc;
+      }, [])
+    );
+
+    const starships$ = from(starships).pipe(
+      mergeMap((starshipUrl) => this.http.get(starshipUrl)),
+      scan((acc: any, curr: any) => {
+        acc.push(curr);
+        return acc;
+      }, [])
+    );
+    forkJoin([characters$, planets$, starships$]).subscribe((data) => {
+      this.charactersSubject.next(data[0]);
+      this.planetsSubject.next(data[1]);
+      this.starshipsSubject.next(data[2]);
+    });
+  }
 
   constructor(private http: HttpClient) {}
 

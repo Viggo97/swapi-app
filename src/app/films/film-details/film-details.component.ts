@@ -10,6 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class FilmDetailsComponent implements OnInit {
   filmId = 0;
   film$ = this.filmsService.film$;
+  characters$ = this.filmsService.characters$;
+  planets$ = this.filmsService.planets$;
+  starships$ = this.filmsService.starships$;
 
   constructor(
     private filmsService: FilmsService,
