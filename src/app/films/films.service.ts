@@ -80,11 +80,13 @@ export class FilmsService {
         return acc;
       }, [])
     );
-    forkJoin([characters$, planets$, starships$]).subscribe((data) => {
-      this.charactersSubject.next(data[0]);
-      this.planetsSubject.next(data[1]);
-      this.starshipsSubject.next(data[2]);
-    });
+    forkJoin([characters$, planets$, starships$]).subscribe(
+      ([characters, planets, starships]) => {
+        this.charactersSubject.next(characters);
+        this.planetsSubject.next(planets);
+        this.starshipsSubject.next(starships);
+      }
+    );
   }
 
   constructor(private http: HttpClient) {}

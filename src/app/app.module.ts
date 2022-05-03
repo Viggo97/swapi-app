@@ -5,23 +5,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AngularMaterialModule } from "./angular-material/angular-material.module";
-import { LayoutModule} from "./layout/layout.module"
-import {FilmsModule} from "./films/films.module";
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { LayoutModule } from './layout/layout.module';
+import { FilmsModule } from './films/films.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
     LayoutModule,
-    FilmsModule
+    FilmsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
