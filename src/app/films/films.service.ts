@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  catchError,
+  tap,
+  concatMap,
+  map,
+  Observable,
+  throwError,
+  EMPTY,
+  BehaviorSubject,
+} from 'rxjs';
 
 import { URL } from '../../environments/environment';
-import { FilmSchema } from './model';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { Film, FilmSchema } from './model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +24,27 @@ export class FilmsService {
     catchError(this.handleError)
   );
 
+  private filmIdSubject = new BehaviorSubject<number>(0);
+  filmId$ = this.filmIdSubject.asObservable();
+
+  film$ = this.filmId$.pipe(
+    concatMap((id) =>
+      id != 0 ? this.http.get<Film>(`${URL}/films/${id}`) : EMPTY
+    ),
+    catchError(this.handleError)
+  );
+
+  // characters$ = null;
+  // planets$ = null;
+  // starships$ = null;
+
   constructor(private http: HttpClient) {}
+
+  setFilmId(id: number) {
+    if (id != 0) {
+      this.filmIdSubject.next(id);
+    }
+  }
 
   private handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage: string;
