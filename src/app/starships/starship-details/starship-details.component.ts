@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StarshipsService } from '../starships.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-starship-details',
@@ -13,11 +14,16 @@ export class StarshipDetailsComponent implements OnInit {
 
   constructor(
     private starshipsService: StarshipsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => (this.starshipId = +params['id']));
     this.starshipsService.setStarshipId(this.starshipId);
+  }
+
+  back() {
+    this.location.back();
   }
 }

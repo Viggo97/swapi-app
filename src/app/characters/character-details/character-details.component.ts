@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CharactersService } from '../characters.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-character-details',
@@ -13,11 +14,16 @@ export class CharacterDetailsComponent implements OnInit {
 
   constructor(
     private charactersService: CharactersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => (this.characterId = +params['id']));
     this.charactersService.setCharacterId(this.characterId);
+  }
+
+  back() {
+    this.location.back();
   }
 }
