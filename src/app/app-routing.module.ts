@@ -9,6 +9,11 @@ const routes: Routes = [
       import('./films/films.module').then((m) => m.FilmsModule),
   },
   {
+    path: 'characters',
+    loadChildren: () =>
+      import('./characters/characters.module').then((m) => m.CharactersModule),
+  },
+  {
     path: '',
     redirectTo: 'films',
     pathMatch: 'full',
