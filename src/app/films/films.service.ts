@@ -14,6 +14,7 @@ import {
   mergeMap,
   forkJoin,
   scan,
+  shareReplay,
 } from 'rxjs';
 
 import { URL } from '../../environments/environment';
@@ -25,6 +26,7 @@ import { Character, Film, FilmSchema, Planet, Starship } from './model';
 export class FilmsService {
   films$ = this.http.get<FilmSchema>(`${URL}/films`).pipe(
     map((data) => data.results),
+    shareReplay(1),
     catchError(this.handleError)
   );
 
