@@ -18,6 +18,6 @@ export class FilmsComponent implements OnInit {
   ngOnInit(): void {}
 
   navigateToFilmDetails(url: string) {
-    this.router.navigate([getIdFromUrl(url)]);
+    this.router.navigate(['films', getIdFromUrl(url)]);
   }
 }
