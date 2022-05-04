@@ -1,0 +1,36 @@
+<ng-container *ngIf="starship$ | async as starship; else loading">
+  <h1>{{starship.name}}</h1>
+
+  <mat-list>
+    <mat-list-item>Model: {{starship.model}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Starship class: {{starship.starship_class}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Manufacturer: {{starship.manufacturer}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Cost in credits: {{starship.cost_in_credits}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Length: {{starship.length}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Crew: {{starship.crew}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Passengers: {{starship.passengers}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Max atmosphering speed: {{starship.max_atmosphering_speed}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Hyperdrive rating: {{starship.hyperdrive_rating}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>MGLT: {{starship.MGLT}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Cargo capacity: {{starship.cargo_capacity}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Consumables: {{starship.consumables}}</mat-list-item>
+  </mat-list>
+
+</ng-container>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+
