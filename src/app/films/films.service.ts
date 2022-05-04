@@ -18,7 +18,10 @@ import {
 } from 'rxjs';
 
 import { URL } from '../../environments/environment';
-import { Character, Film, FilmSchema, Planet, Starship } from './model';
+import { Film, FilmSchema } from './model';
+import { Character } from '../characters/character.model';
+import { Planet } from '../planets/planet.model';
+import { Starship } from '../starships/starship.model';
 
 @Injectable({
   providedIn: 'root',

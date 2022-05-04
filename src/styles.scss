@@ -6,3 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 mat-spinner {
   margin: 0 auto;
 }
+
+mat-list-item.link:hover {
+  background-color: #b5b7bf;
+  cursor: pointer;
+}
