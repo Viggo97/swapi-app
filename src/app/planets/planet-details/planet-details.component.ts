@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { PlanetsService } from '../planets.service';
 
 @Component({
-  selector: 'app-planet-detail',
-  templateUrl: './planet-detail.component.html',
-  styleUrls: ['./planet-detail.component.scss'],
+  selector: 'app-planet-details',
+  templateUrl: './planet-details.component.html',
+  styleUrls: ['./planet-details.component.scss'],
 })
-export class PlanetDetailComponent implements OnInit {
+export class PlanetDetailsComponent implements OnInit {
   planetId = 0;
   planet$ = this.planetsService.planet$;
 

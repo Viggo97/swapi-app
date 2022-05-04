@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
+import { PlanetDetailsComponent } from './planet-details/planet-details.component';
 
 const routes: Routes = [
   {
     path: ':id',
-    component: PlanetDetailComponent,
+    component: PlanetDetailsComponent,
   },
   {
     path: '',

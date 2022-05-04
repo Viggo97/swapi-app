@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlanetDetailComponent } from './planet-detail.component';
+import { PlanetDetailComponent } from './planet-details.component';
 
 describe('PlanetDetailComponent', () => {
   let component: PlanetDetailComponent;
@@ -8,9 +8,8 @@ describe('PlanetDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlanetDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [PlanetDetailComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
