@@ -1,0 +1,28 @@
+<ng-container *ngIf="planet$ | async as planet; else loading">
+  <h1>{{planet.name}}</h1>
+
+  <mat-list>
+    <mat-list-item>Diameter: {{planet.diameter}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Rotation period: {{planet.rotation_period}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Orbital period: {{planet.orbital_period}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Gravity: {{planet.gravity}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Population: {{planet.population}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Climate: {{planet.climate}}</mat-list-item><mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <mat-list-item>Terrain: {{planet.terrain}}</mat-list-item><mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <mat-list-item>Surface water: {{planet.surface_water}}</mat-list-item>
+  </mat-list>
+
+</ng-container>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+

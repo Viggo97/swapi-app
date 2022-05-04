@@ -14,6 +14,11 @@ const routes: Routes = [
       import('./characters/characters.module').then((m) => m.CharactersModule),
   },
   {
+    path: 'planets',
+    loadChildren: () =>
+      import('./planets/planets.module').then((m) => m.PlanetsModule),
+  },
+  {
     path: '',
     redirectTo: 'films',
     pathMatch: 'full',
