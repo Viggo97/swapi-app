@@ -7,7 +7,6 @@ import {
   Observable,
   throwError,
 } from 'rxjs';
-import { Character } from '../characters/character.model';
 import { URL } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Starship } from './starship.model';
